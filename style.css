@@ -1,0 +1,343 @@
+/* ============================================================
+   Yamaha — Catálogo de modelos
+   Paleta: negro grafito + rojo Yamaha + blanco hueso
+   Tipografía: Barlow Condensed (títulos, estilo placa numerada)
+               + Inter (texto)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --negro: #0e0e10;
+  --negro-panel: #17171a;
+  --negro-linea: #2a2a2e;
+  --rojo: #E10600;
+  --rojo-oscuro: #a10400;
+  --hueso: #f2f1ec;
+  --gris-texto: #b7b6b1;
+  --radio: 2px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--negro);
+  color: var(--hueso);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; text-decoration: none; }
+
+img{ max-width: 100%; display: block; }
+
+h1, h2, h3, .cifra{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+  border-bottom: 1px solid var(--negro-linea);
+}
+
+.marca{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.marca img{ height: 34px; width: auto; filter: invert(1) brightness(1.4); }
+
+.marca span{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.volver{
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  border: 1px solid var(--negro-linea);
+  padding: 8px 16px;
+  transition: border-color .2s, color .2s;
+}
+.volver:hover{ border-color: var(--rojo); color: var(--hueso); }
+
+/* ---------- Portada / hero ---------- */
+.hero{
+  padding: 8vh 6vw 6vh;
+  border-bottom: 1px solid var(--negro-linea);
+}
+
+.hero h1{
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.hero h1 em{
+  font-style: normal;
+  color: var(--rojo);
+}
+
+.hero p{
+  max-width: 540px;
+  color: var(--gris-texto);
+  margin-top: 18px;
+  font-size: 1.05rem;
+}
+
+/* ---------- Grilla de modelos (portada) ---------- */
+.grilla-modelos{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  border-top: 1px solid var(--negro-linea);
+}
+
+.tarjeta-moto{
+  border-right: 1px solid var(--negro-linea);
+  border-bottom: 1px solid var(--negro-linea);
+  padding: 34px 30px 30px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  transition: background .25s;
+}
+.tarjeta-moto:hover{ background: var(--negro-panel); }
+
+.tarjeta-moto .num{
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--negro-linea);
+  font-weight: 700;
+  font-size: 3.5rem;
+  position: absolute;
+  top: 6px;
+  right: 18px;
+  line-height: 1;
+  transition: color .25s;
+}
+.tarjeta-moto:hover .num{ color: var(--rojo-oscuro); }
+
+.tarjeta-moto .marco-img{
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.tarjeta-moto img{
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(15%);
+  transition: transform .3s;
+}
+.tarjeta-moto:hover img{ transform: scale(1.04); }
+
+.tarjeta-moto h2{
+  font-size: 1.9rem;
+  text-transform: uppercase;
+}
+
+.tarjeta-moto .segmento{
+  color: var(--gris-texto);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.tarjeta-moto .cta{
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--rojo);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Pie ---------- */
+.pie{
+  padding: 30px 6vw 40px;
+  color: var(--gris-texto);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--negro-linea);
+}
+
+/* ============================================================
+   Página de ficha individual
+   ============================================================ */
+
+.ficha-hero{
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  border-bottom: 1px solid var(--negro-linea);
+}
+@media (max-width: 860px){
+  .ficha-hero{ grid-template-columns: 1fr; }
+}
+
+.ficha-hero .col-texto{
+  padding: 7vh 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ficha-hero .col-img{
+  background: var(--negro-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-left: 1px solid var(--negro-linea);
+}
+@media (max-width: 860px){
+  .ficha-hero .col-img{ border-left: none; border-top: 1px solid var(--negro-linea); order: -1; }
+}
+
+.ficha-hero img{ max-height: 380px; }
+
+.rotulo{
+  color: var(--rojo);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.ficha-hero h1{
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+.precio-caja{
+  margin-top: 26px;
+  display: inline-block;
+}
+.precio-caja .etiqueta{
+  color: var(--gris-texto);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.precio-caja .monto{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+}
+.precio-caja .nota{
+  color: var(--gris-texto);
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+/* ---------- Cifras clave (0-100, hp, etc.) ---------- */
+.cifras-clave{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--negro-linea);
+}
+@media (max-width: 700px){
+  .cifras-clave{ grid-template-columns: repeat(2, 1fr); }
+}
+
+.cifra-item{
+  padding: 30px 24px;
+  border-right: 1px solid var(--negro-linea);
+}
+.cifra-item:last-child{ border-right: none; }
+
+.cifra-item .cifra{
+  font-size: 2.6rem;
+  color: var(--rojo);
+  line-height: 1;
+}
+.cifra-item .unidad{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  color: var(--hueso);
+  margin-left: 4px;
+}
+.cifra-item .desc{
+  margin-top: 8px;
+  color: var(--gris-texto);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Tabla de ficha técnica ---------- */
+.seccion{
+  padding: 60px 6vw;
+  border-bottom: 1px solid var(--negro-linea);
+}
+
+.seccion h2{
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.tabla-specs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+}
+@media (max-width: 700px){
+  .tabla-specs{ grid-template-columns: 1fr; }
+}
+
+.fila-spec{
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--negro-linea);
+  gap: 20px;
+}
+.fila-spec .k{
+  color: var(--gris-texto);
+  font-size: 0.92rem;
+}
+.fila-spec .v{
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.equipamiento{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.chip{
+  border: 1px solid var(--negro-linea);
+  padding: 9px 16px;
+  font-size: 0.82rem;
+  color: var(--gris-texto);
+}
+.chip.si{ border-color: var(--rojo); color: var(--hueso); }
+.chip.si::before{ content: "✓ "; color: var(--rojo); }
+.chip.no::before{ content: "— "; }
+
+.aviso{
+  color: var(--gris-texto);
+  font-size: 0.78rem;
+  margin-top: 10px;
+  }
